@@ -24,7 +24,7 @@
  */
 
 // Backends
-require __DIR__ . '3rdparty/autoload.php';
+require __DIR__ . '/3rdparty/autoload.php';
 
 $tokeninfoEndpoint = \OCP\Config::getAppValue("user_oauth_unity", "tokeninfoEndpoint", "https://example.org/oauth2/tokeninfo" );
 $userinfoEndpoint = \OCP\Config::getAppValue("user_oauth_unity", "userinfoEndpoint", "https://example.org/oauth2/userinfo" );
