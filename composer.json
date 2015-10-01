@@ -1,0 +1,15 @@
+{
+    "autoload": {
+        "psr-0": { "": "src/"}
+    },
+    "config": {
+        "vendor-dir": "3rdparty"
+    },
+    "repositories" : [
+      {"type" : "git",
+      "url": "../unity-oauth-rs/"}
+    ],
+    "require": {
+        "weblicht/unity-oauth-rs": "dev-master"
+    }
+}
