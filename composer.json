@@ -7,7 +7,7 @@
     },
     "repositories" : [
       {"type" : "git",
-      "url": "../unity-oauth-rs/"}
+      "url": "https://github.com/weblicht/unity-oauth-rs.git"}
     ],
     "require": {
         "weblicht/unity-oauth-rs": "dev-master"
