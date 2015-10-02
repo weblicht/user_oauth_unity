@@ -2,7 +2,7 @@
 
 OCP\User::checkAdminUser();
 
-$params = array('tokeninfoEndpoint', 'userinfoEndpoint');
+$params = array('tokenIntrospectionEndpoint');
 
 if($_POST) {
     foreach($params as $param) {
@@ -15,8 +15,7 @@ if($_POST) {
 $tmpl = new OCP\Template('user_oauth_unity', 'settings');
 
 
-$tmpl->assign('tokeninfoEndpoint', OCP\Config::getAppValue('user_oauth_unity', 'tokeninfoEndpoint', 'https://example.org/oauth2/tokeninfo' ));
-$tmpl->assign('userinfoEndpoint', OCP\Config::getAppValue('user_oauth_unity', 'userinfoEndpoint', 'https://example.org/oauth2/userinfo'));
+$tmpl->assign('tokenIntrospectionEndpoint', OCP\Config::getAppValue('user_oauth_unity', 'tokenIntrospectionEndpoint', 'https://example.org/oauth2' ));
 
 return $tmpl->fetchPage();
 

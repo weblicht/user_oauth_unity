@@ -9,6 +9,6 @@
 OCP\User::checkAdminUser();
 OCP\JSON::callCheck();
 
-OCP\Config::setSystemValue( 'tokeninfoEndpoint', $_POST['tokeninfoEndpoint'] );
+OCP\Config::setSystemValue( 'tokenIntrospectionEndpoint', $_POST['tokenIntrospectionEndpoint'] );
 
 echo 'true';

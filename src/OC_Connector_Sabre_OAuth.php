@@ -1,6 +1,7 @@
 <?php
 
 require __dir__ . '/../3rdparty/autoload.php';
+
 use GuzzleHttp\Client;
 use Sabre\DAV\Auth\Backend\BackendInterface;
 use weblicht\OAuth\ResourceServer\ResourceServerException;
@@ -9,14 +10,12 @@ use weblicht\OAuth\ResourceServer\UnityResourceServer;
 
 class OC_Connector_Sabre_OAuth implements BackendInterface
 {
+    private $tokenIntrospectionEndpoint;
     private $currentUser;
-    private $tokeninfoEndpoint;
-    private $userinfoEndpoint;
 
-    public function __construct($tokeninfoEndpoint, $userinfoEndpoint)
+    public function __construct($tokenIntrospectionEndpoint)
     {
-        $this->tokeninfoEndpoint = $tokeninfoEndpoint;
-        $this->userinfoEndpoint = $userinfoEndpoint;
+        $this->tokenIntrospectionEndpoint = $tokenIntrospectionEndpoint;
         $this->currentUser = null;
     }
 
@@ -28,15 +27,13 @@ class OC_Connector_Sabre_OAuth implements BackendInterface
     public function authenticate(\Sabre\DAV\Server $server, $realm)
     {
         $config = array(
-            "tokeninfoEndpoint" => $this->tokeninfoEndpoint,
-            "uerinfoEndpoint" => $this->userinfoEndpoint,
+            "tokenIntrospectionEndpoint" => $this->tokenIntrospectionEndpoint,
             "realm" => $realm
         );
 
         try {
-            $clientToken = new Client(['base_uri' => $this->tokeninfoEndpoint]);
-            $clientUser = new Client(['base_uri' => $this->userinfoEndpoint]);
-            $resourceServer = new UnityResourceServer($clientToken, $clientUser);
+            $client = new Client(['base_uri' => $this->tokenIntrospectionEndpoint]);
+            $resourceServer = new UnityResourceServer($client);
             $requestHeaders = apache_request_headers();
 
             $authorizationHeader = isset($requestHeaders['Authorization']) ? $requestHeaders['Authorization'] : null;

@@ -28,10 +28,9 @@ require __DIR__ . '/3rdparty/autoload.php';
 require_once __DIR__ . '/src/OC_Connector_Sabre_OAuth.php';
 require_once __DIR__ . '/src/OC_Connector_Sabre_QueryRequest.php';
 
-$tokeninfoEndpoint = \OCP\Config::getAppValue("user_oauth_unity", "tokeninfoEndpoint", "https://example.org/oauth2/tokeninfo" );
-$userinfoEndpoint = \OCP\Config::getAppValue("user_oauth_unity", "userinfoEndpoint", "https://example.org/oauth2/userinfo" );
+$tokenIntrospectionEndpoint = \OCP\Config::getAppValue("user_oauth_unity", "tokenIntrospectionEndpoint", "https://example.org/oauth2/tokeninfo" );
 
-$authBackend = new OC_Connector_Sabre_OAuth($tokeninfoEndpoint, $userinfoEndpoint);
+$authBackend = new OC_Connector_Sabre_OAuth($tokenIntrospectionEndpoint);
 $lockBackend = new OC_Connector_Sabre_Locks();
 $requestBackend = new OC_Connector_Sabre_QueryRequest();
 
