@@ -25,6 +25,8 @@
 
 // Backends
 require __DIR__ . '/3rdparty/autoload.php';
+require_once __DIR__ . '/src/OC_Connector_Sabre_OAuth.php';
+require_once __DIR__ . '/src/OC_Connector_Sabre_QueryRequest.php';
 
 $tokeninfoEndpoint = \OCP\Config::getAppValue("user_oauth_unity", "tokeninfoEndpoint", "https://example.org/oauth2/tokeninfo" );
 $userinfoEndpoint = \OCP\Config::getAppValue("user_oauth_unity", "userinfoEndpoint", "https://example.org/oauth2/userinfo" );
