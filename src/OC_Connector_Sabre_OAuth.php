@@ -36,7 +36,7 @@ class OC_Connector_Sabre_OAuth implements BackendInterface
             $resourceServer = new UnityResourceServer($client);
             $requestHeaders = apache_request_headers();
 
-            $authorizationHeader = isset($requestHeaders['Authorization']) ? $requestHeaders['Authorization'] : null;
+            $authorizationHeader = isset($requestHeaders['Authorization']) ? ucfirst($requestHeaders['Authorization']) : null;
             $resourceServer->setAuthorizationHeader($authorizationHeader);
             //get the query parameter
             $tokenIntrospection = $resourceServer->verifyToken();
